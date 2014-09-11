@@ -57,7 +57,7 @@ describe('FileProcessor', function () {
     it('should replace block with the replacement contains$&(special character)', function () {
       var fp = new FileProcessor('html', {});
       fp.replaceWith = function () {
-        return 'foo$&foo';
+        return 'foo$&foo$&foo';
       };
       var file = {
         content: 'foo\nbar\nbaz\n',
@@ -66,7 +66,7 @@ describe('FileProcessor', function () {
         }]
       };
       var result = fp.replaceBlocks(file);
-      assert.equal(result, 'foo\nfoo$&foo\n');
+      assert.equal(result, 'foo\nfoo$&foo$&foo\n');
     });
   });
 
